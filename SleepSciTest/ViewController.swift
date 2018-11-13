@@ -25,6 +25,9 @@ class ViewController: UIViewController {
     private let animationDuration: TimeInterval = 2
     private var breathType: BreathType = .prepare
     
+    private var timer: Timer!
+    private var seconds = 10
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +42,18 @@ class ViewController: UIViewController {
     private func animateBreathSquare(with scalePoint: BreathType) {
         let scale = scalePoint.rawValue
         animatingView.transform = CGAffineTransform(scaleX: scale, y: scale)
+    }
+    
+    private func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func updateTimer() {
+        seconds -= 1
+        timerLabel.text = "\(seconds)"
+        if seconds < 1 {
+            timer.invalidate()
+        }
     }
     
     private func startAnimation() {
@@ -60,7 +75,8 @@ class ViewController: UIViewController {
     }
     
     //MARK:- IBActions
-    @IBAction func startBreathing(_ sender: Any) {
+    @IBAction func startBreathing(_ sender: UIButton) {
+        startTimer()
         startAnimation()
     }
 }
