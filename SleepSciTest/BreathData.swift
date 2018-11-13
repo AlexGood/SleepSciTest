@@ -10,7 +10,7 @@ import UIKit
 
 struct BreathData: Decodable {
     var type = String()
-    var duration = Int()
+    var duration = TimeInterval()
     var color = String()
     
     static func getJsonData() -> [BreathData]?{

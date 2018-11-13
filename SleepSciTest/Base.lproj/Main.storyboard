@@ -44,7 +44,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7px-Er-Okw">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="315"/>
                                         <connections>
-                                            <action selector="startBreathing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kla-Zj-EvA"/>
+                                            <action selector="prepareForBreathing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ohZ-wI-9gj"/>
                                         </connections>
                                     </button>
                                 </subviews>
