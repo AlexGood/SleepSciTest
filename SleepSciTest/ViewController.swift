@@ -25,6 +25,8 @@ class ViewController: UIViewController {
     private let animationDuration: TimeInterval = 2
     private var breathType: BreathType = .prepare
     
+    private var breathData = [BreathData]()
+    
     private var timer: Timer!
     private var seconds = 10
     
@@ -32,11 +34,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         setupAnimatingView()
+        setupData()
     }
     
     //MARK:- Private
     private func setupAnimatingView() {
         animateBreathSquare(with: .inhale)
+    }
+    
+    private func setupData() {
+        if let breathData = BreathData.getJsonData() {
+            self.breathData = breathData
+        }
     }
     
     private func animateBreathSquare(with scalePoint: BreathType) {

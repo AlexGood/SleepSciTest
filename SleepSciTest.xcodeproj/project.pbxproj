@@ -12,6 +12,8 @@
 		FAD6550B219A0A10004F20C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAD65509219A0A10004F20C2 /* Main.storyboard */; };
 		FAD6550D219A0A12004F20C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD6550C219A0A12004F20C2 /* Assets.xcassets */; };
 		FAD65510219A0A12004F20C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAD6550E219A0A12004F20C2 /* LaunchScreen.storyboard */; };
+		FAD6551A219B625C004F20C2 /* JsonDataFile.json in Resources */ = {isa = PBXBuildFile; fileRef = FAD65519219B625C004F20C2 /* JsonDataFile.json */; };
+		FAD6551C219B695E004F20C2 /* BreathData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6551B219B695E004F20C2 /* BreathData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		FAD6550C219A0A12004F20C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAD6550F219A0A12004F20C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAD65511219A0A12004F20C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAD65519219B625C004F20C2 /* JsonDataFile.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = JsonDataFile.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		FAD6551B219B695E004F20C2 /* BreathData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +60,9 @@
 			children = (
 				FAD65505219A0A10004F20C2 /* AppDelegate.swift */,
 				FAD65507219A0A10004F20C2 /* ViewController.swift */,
+				FAD6551B219B695E004F20C2 /* BreathData.swift */,
 				FAD65509219A0A10004F20C2 /* Main.storyboard */,
+				FAD65519219B625C004F20C2 /* JsonDataFile.json */,
 				FAD6550C219A0A12004F20C2 /* Assets.xcassets */,
 				FAD6550E219A0A12004F20C2 /* LaunchScreen.storyboard */,
 				FAD65511219A0A12004F20C2 /* Info.plist */,
@@ -122,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAD6551A219B625C004F20C2 /* JsonDataFile.json in Resources */,
 				FAD65510219A0A12004F20C2 /* LaunchScreen.storyboard in Resources */,
 				FAD6550D219A0A12004F20C2 /* Assets.xcassets in Resources */,
 				FAD6550B219A0A10004F20C2 /* Main.storyboard in Resources */,
@@ -136,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAD65508219A0A10004F20C2 /* ViewController.swift in Sources */,
+				FAD6551C219B695E004F20C2 /* BreathData.swift in Sources */,
 				FAD65506219A0A10004F20C2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
