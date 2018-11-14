@@ -123,8 +123,7 @@ class SquareView: UIView {
         updateUI(with: data)
         
         switch self.breathType {
-        case .prepare:
-            self.animateSquare(with: .prepare)
+        case .prepare: break
         case .inhale:
             self.animateSquare(with: .inhale)
         case .exhale:
@@ -146,19 +145,27 @@ class SquareView: UIView {
         })
     }
     
+    private func prepareInfoLabels(isStartPosition: Bool = false) {
+        if isStartPosition {
+            self.timerLabel.text = ""
+            self.titleLabel.text = "TAP HERE TO BREATHE"
+        } else {
+            self.timerLabel.text = ""
+            self.titleLabel.text = ""
+        }
+    }
+    
     private func endBreathing() {
         self.timer.invalidate()
         
-        self.timerLabel.text = ""
-        self.titleLabel.text = ""
+        prepareInfoLabels()
         
         self.delegate.toggleRemainingTimeVisibility()
         
         UIView.animate(withDuration: defaultDuration, animations: {
             self.animateBreathSquare(with: .inhale)
         }, completion: { _ in
-            self.timerLabel.text = ""
-            self.titleLabel.text = "TAP HERE TO BREATHE"
+            self.prepareInfoLabels(isStartPosition: true)
             self.animatingView.backgroundColor = UIColor.yellow
             self.squareButton.isEnabled.toggle()
             self.breathPosition = 0
@@ -173,8 +180,7 @@ class SquareView: UIView {
     @IBAction func prepareForBreathing(_ sender: UIButton) {
         squareButton.isEnabled.toggle()
         
-        titleLabel.text = ""
-        timerLabel.text = ""
+        prepareInfoLabels()
         animatingView.backgroundColor = .customAqua
         
         UIView.animate(withDuration: defaultDuration, animations: {
