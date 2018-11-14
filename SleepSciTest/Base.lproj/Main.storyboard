@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hal-09-3GF">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hal-09-3GF" customClass="SquareView" customModule="SleepSciTest" customModuleProvider="target">
                                 <rect key="frame" x="30" y="88" width="315" height="315"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3EQ-Bb-z8r">
@@ -35,8 +35,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUF-MR-rMj">
-                                        <rect key="frame" x="94" y="189" width="127" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUF-MR-rMj">
+                                        <rect key="frame" x="94" y="189" width="127" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -44,7 +44,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7px-Er-Okw">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="315"/>
                                         <connections>
-                                            <action selector="prepareForBreathing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ohZ-wI-9gj"/>
+                                            <action selector="prepareForBreathing:" destination="hal-09-3GF" eventType="touchUpInside" id="Grm-3C-0AL"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -64,6 +64,12 @@
                                     <constraint firstItem="EUF-MR-rMj" firstAttribute="width" secondItem="uya-oP-sC0" secondAttribute="width" id="lUs-0t-5UL"/>
                                     <constraint firstItem="uya-oP-sC0" firstAttribute="centerX" secondItem="hal-09-3GF" secondAttribute="centerX" id="t4l-61-QXN"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="animatingView" destination="3EQ-Bb-z8r" id="aa6-ab-abl"/>
+                                    <outlet property="squareButton" destination="7px-Er-Okw" id="g4j-7i-QkN"/>
+                                    <outlet property="timerLabel" destination="EUF-MR-rMj" id="umN-p9-1w2"/>
+                                    <outlet property="titleLabel" destination="uya-oP-sC0" id="AwP-xD-lv8"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -75,12 +81,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <connections>
-                        <outlet property="animatingView" destination="3EQ-Bb-z8r" id="zo8-Fs-AlV"/>
-                        <outlet property="breetheContainer" destination="hal-09-3GF" id="YT2-ye-xOb"/>
-                        <outlet property="timerLabel" destination="EUF-MR-rMj" id="m8P-6l-2DQ"/>
-                        <outlet property="titleLabel" destination="uya-oP-sC0" id="0NP-c1-1D3"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
