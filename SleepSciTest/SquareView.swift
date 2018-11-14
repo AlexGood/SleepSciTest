@@ -31,6 +31,7 @@ class SquareView: UIView {
     
     private var timer: Timer!
     private var seconds: TimeInterval = 0
+    private var defaultDuration: TimeInterval = 2
     private var duration: TimeInterval = 0
     private var remainingTime: TimeInterval = 0
     
@@ -153,7 +154,7 @@ class SquareView: UIView {
         
         self.delegate.toggleRemainingTimeVisibility()
         
-        UIView.animate(withDuration: 2, animations: {
+        UIView.animate(withDuration: defaultDuration, animations: {
             self.animateBreathSquare(with: .inhale)
         }, completion: { _ in
             self.timerLabel.text = ""
@@ -174,9 +175,9 @@ class SquareView: UIView {
         
         titleLabel.text = ""
         timerLabel.text = ""
-        animatingView.backgroundColor = UIColor(red:0.17, green:1.00, blue:1.00, alpha:1.00)
+        animatingView.backgroundColor = .customAqua
         
-        UIView.animate(withDuration: 2, animations: {
+        UIView.animate(withDuration: defaultDuration, animations: {
             self.animateBreathSquare(with: .prepare)
         }, completion: { _ in
             self.startBreathing()

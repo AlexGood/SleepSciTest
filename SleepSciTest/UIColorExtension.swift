@@ -10,6 +10,10 @@ import UIKit
 
 extension UIColor {
     
+    @nonobjc class var customAqua: UIColor {
+        return UIColor(red:0.17, green:1.00, blue:1.00, alpha:1.00)
+    }
+    
     convenience init(hex: String, alpha: CGFloat = 1.0) {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
