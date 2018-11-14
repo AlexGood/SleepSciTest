@@ -71,9 +71,37 @@
                                     <outlet property="titleLabel" destination="uya-oP-sC0" id="AwP-xD-lv8"/>
                                 </connections>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5w5-kY-y0Y">
+                                <rect key="frame" x="91.5" y="599" width="192" height="63"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remaining" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnK-km-pNH">
+                                        <rect key="frame" x="56" y="8" width="80" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fl-Sb-cN3">
+                                        <rect key="frame" x="73" y="34" width="46" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="2nV-1H-T0h"/>
+                                    <constraint firstItem="3Fl-Sb-cN3" firstAttribute="centerX" secondItem="5w5-kY-y0Y" secondAttribute="centerX" id="DAQ-AD-R3E"/>
+                                    <constraint firstAttribute="width" constant="192" id="HMY-d8-8XQ"/>
+                                    <constraint firstItem="jnK-km-pNH" firstAttribute="centerX" secondItem="5w5-kY-y0Y" secondAttribute="centerX" id="Ttk-bv-XT0"/>
+                                    <constraint firstItem="3Fl-Sb-cN3" firstAttribute="top" secondItem="jnK-km-pNH" secondAttribute="bottom" constant="5" id="WeH-Nz-4L7"/>
+                                    <constraint firstAttribute="bottom" secondItem="3Fl-Sb-cN3" secondAttribute="bottom" constant="8" id="j1F-W9-ihf"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="5w5-kY-y0Y" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Baf-th-rsC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5w5-kY-y0Y" secondAttribute="bottom" constant="5" id="bBU-q6-0QS"/>
                             <constraint firstItem="hal-09-3GF" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="-60" id="iCL-RX-eII"/>
                             <constraint firstItem="hal-09-3GF" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" constant="-352" id="s0f-PG-uMP"/>
                             <constraint firstItem="hal-09-3GF" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-98" id="smP-V9-pbM"/>
@@ -81,6 +109,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="remainingTimeLabel" destination="3Fl-Sb-cN3" id="2bo-xM-6Yc"/>
+                        <outlet property="remainingTimeView" destination="5w5-kY-y0Y" id="sSQ-cR-UJ6"/>
+                        <outlet property="squareView" destination="hal-09-3GF" id="sSh-AI-of5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,9 +10,23 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var squareView: SquareView!
+    @IBOutlet weak var remainingTimeLabel: UILabel!
+    @IBOutlet weak var remainingTimeView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let square = SquareView()
+        squareView.delegate = self
+    }
+}
+
+extension ViewController: SquareViewDelegate {
+    func updateRemaining(time: String) {
+        remainingTimeLabel.text = time
+    }
+    
+    func toggleRemainingTimeVisibility() {
+        remainingTimeView.isHidden.toggle()
     }
 }

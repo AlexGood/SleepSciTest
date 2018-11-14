@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol SquareViewDelegate: class {
+    func updateRemaining(time: String)
+    func toggleRemainingTimeVisibility()
+}
+
 private enum BreathType: CGFloat {
     case inhale = 1
     case prepare = 0.75
@@ -25,10 +30,13 @@ class SquareView: UIView {
     private var breathData = [BreathData]()
     
     private var timer: Timer!
-    private var seconds = 0
+    private var seconds: TimeInterval = 0
     private var duration: TimeInterval = 0
+    private var remainingTime: TimeInterval = 0
     
     private var breathPosition = 0
+    
+    weak var delegate: SquareViewDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -60,15 +68,31 @@ class SquareView: UIView {
     }
     
     @objc private func updateTime() {
-        let minutes = Int(self.seconds) / 60 % 60
-        let second = Int(self.seconds) % 60
-        
         if seconds >= 0 {
+            self.remainingTime -= 1
+            delegate.updateRemaining(time: timeToString(data: self.remainingTime))
+            
+            timerLabel.text = timeToString(data: seconds)
             self.seconds -= 1
-            timerLabel.text = String(format:"%02i:%02i", minutes, second)
         } else if breathType == .hold{
             animateSquare(with: .hold)
         }
+    }
+    
+    private func calculateRemainingTime() {
+        
+        for object in breathData {
+            remainingTime += object.duration + 1
+        }
+        
+        delegate.updateRemaining(time: timeToString(data: remainingTime))
+    }
+    
+    private func timeToString(data: TimeInterval) -> String {
+        let minutes = Int(data) / 60 % 60
+        let second = Int(data) % 60
+        
+        return String(format:"%02i:%02i", minutes, second)
     }
     
     private func setType(with type: String) {
@@ -84,12 +108,12 @@ class SquareView: UIView {
     private func updateUI(with data: BreathData) {
         setType(with: data.type)
         
-        //+ 1 to show 00:00 position
+        //+ 1 to show 00:00 position as on animation
         duration = data.duration + 1
         animatingView.backgroundColor = UIColor(hex: data.color)
         titleLabel.text = data.type.uppercased()
         
-        self.seconds = Int(data.duration)
+        self.seconds = data.duration
         updateTime()
     }
     
@@ -127,6 +151,8 @@ class SquareView: UIView {
         self.timerLabel.text = ""
         self.titleLabel.text = ""
         
+        self.delegate.toggleRemainingTimeVisibility()
+        
         UIView.animate(withDuration: 2, animations: {
             self.animateBreathSquare(with: .inhale)
         }, completion: { _ in
@@ -155,6 +181,8 @@ class SquareView: UIView {
         }, completion: { _ in
             self.startBreathing()
             self.startTimer()
+            self.calculateRemainingTime()
+            self.delegate.toggleRemainingTimeVisibility()
         })
     }
 }
