@@ -13,7 +13,7 @@ protocol SquareViewDelegate: class {
     func toggleRemainingTimeVisibility()
 }
 
-private enum BreathType: CGFloat {
+enum BreathType: CGFloat {
     case inhale = 1
     case prepare = 0.75
     case exhale = 0.5
@@ -96,23 +96,13 @@ class SquareView: UIView {
         return String(format:"%02i:%02i", minutes, second)
     }
     
-    private func setType(with type: String) {
-        if type == "inhale" {
-            breathType = .inhale
-        } else if type == "exhale" {
-            breathType = .exhale
-        } else {
-            breathType = .hold
-        }
-    }
-    
     private func updateUI(with data: BreathData) {
-        setType(with: data.type)
+        breathType = data.breathType
         
         //+ 1 to show 00:00 position as on animation
         duration = data.duration + 1
-        animatingView.backgroundColor = UIColor(hex: data.color)
-        titleLabel.text = data.type.uppercased()
+        animatingView.backgroundColor = data.color
+        titleLabel.text = data.type
         
         self.seconds = data.duration
         updateTime()

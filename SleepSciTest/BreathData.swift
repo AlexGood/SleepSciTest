@@ -10,8 +10,9 @@ import UIKit
 
 struct BreathData: Decodable {
     var type = String()
+    var breathType: BreathType = .inhale
     var duration = TimeInterval()
-    var color = String()
+    var color = UIColor()
     
     static func getJsonData() -> [BreathData]?{
         if let path = Bundle.main.path(forResource: "JsonDataFile", ofType: "json") {
@@ -26,6 +27,35 @@ struct BreathData: Decodable {
             }
         } else {
             return nil
+        }
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case type
+        case duration
+        case color
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        let stringType = try container.decode(String.self, forKey: .type)
+        type = stringType.uppercased()
+        breathType = toBreathTipe(with: stringType)
+        
+        duration = try container.decode(TimeInterval.self, forKey: .duration)
+        
+        let stringColor = try container.decode(String.self, forKey: .color)
+        color = UIColor(hex: stringColor)
+    }
+    
+    private func toBreathTipe(with type: String) -> BreathType {
+        if type == "inhale" {
+            return .inhale
+        } else if type == "exhale" {
+            return .exhale
+        } else {
+            return .hold
         }
     }
 }
